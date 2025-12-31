@@ -13,7 +13,7 @@ Esta tabla incluye:
 ## ¿Qué es este proyecto?
 
 Este proyecto es una práctica de desarrollo frontend que combina **estructura, estilo e interactividad** para crear una tabla nutritiva con funcionalidades dinámicas.  
-Fue creado como ejercicio para aprender a conectar **HTML + CSS + JavaScript** de forma limpia y usable. :contentReference[oaicite:1]{index=1}
+Fue creado como ejercicio para aprender a conectar **HTML + CSS + JavaScript** de forma limpia y usable
 
 ---
 
