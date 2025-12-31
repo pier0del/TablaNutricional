@@ -1,0 +1,284 @@
+:root {
+    /* root es como el panel de control global del css
+    aqui defines VARIABLES css que puedes reutilizar en todo el documento
+    ventaja: cambias el color aqui y se actualiza en todo el css 
+    */
+    --bg: #0b1220; /*fondo base oscuro (modo noche)*/
+    --card: rgba(255, 255, 255, 0.08);  /*card y card2 : fondos semitransparentes para paneles*/
+    --card-2: rgba(255, 255, 255, 0.06);
+    --text: rgba(255, 255, 255, 0.92);   /*color principal del texto*/
+    --muted: rgba(255, 255, 255, 0.70);   /*texto secundario: menos contraste para subtitulos y notas */
+    --border: rgba(255, 255, 255, 0.14);   /*bordes suaves*/
+    --danger: #ff5c7a;   /*color de alerta / peligro* para el boton de limpiar*/
+    --shadow: 0 18px 60px rgba(0, 0, 0, 0.35); /* sombra para que los paneles "floten" */
+    --accent: #6ae4ff;
+    --accent-2: #a78bfa;
+    /* colores de acento para efectos hover y demas */
+}
+
+* { box-sizing: border-box; }
+/* reset util
+    * box-sizing: border-box hace que el padding y border se incluyan en el ancho y alto total de los elementos
+    * asi es mas facil calcular tamaños y evitar que se desborden */
+
+
+body { /*estilos para toda la pagina */
+
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    /*tipografia moderna y legible*/
+
+
+    background:
+        radial-gradient(1100px 500px at 10% -10%, rgba(106,228,255,0.25), transparent 60%),
+        radial-gradient(900px 500px at 110% 10%, rgba(167,139,250,0.22), transparent 55%),
+        var(--bg);
+        /* fondos con degradados sutiles para dar profundidad */
+
+    color: var(--text); /*color de texto por defecto*/
+
+    padding: 28px 16px;
+    /*separacion interna para que nada quede pegado a los bordes de la ventana*/
+
+}
+
+.app{
+    /*contenedor principal de la aplicacion*/
+
+    margin: 0 auto; /*centra el contenedor horizontalmente */
+    max-width: 980px;  /*evita que se extienda demasiado en pantallas grandes */
+    display: grid; 
+    /*grid + gap para crear un layout con espacios entre secciones */
+    gap: 16px;
+}
+
+.header{
+    /*cabecera centrada con titulo y subtitulo*/
+
+    text-align: center;
+    padding: 10px 6px;
+}
+
+h1 {
+    /* titulo principal 
+    clamp(min, val, max) ajusta el tamaño de fuente segun el ancho de la pantalla
+    para que sea responsivo */
+
+    margin: 0;
+    margin-bottom: 20px;
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    letter-spacing: 0.2px;
+}
+
+.subtitulo{
+    /*texto secundario con menos contraste*/
+
+    margin: 8px 0 0;
+    color: var(--muted);
+    font-size: 0.98rem;
+}
+
+
+.panel{  /*panel: cada seccion se ve como una tarjeta flotante*/
+
+    background: linear-gradient(180deg, var(--card), var(--card-2));
+    /*fondo con degradado suave*/
+
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    padding: 16px;
+    backdrop-filter: blur(10px);
+    /*glassmorphism: desenfoque de fondo para dar efecto de vidrio esmerilado
+    no funciona correctamente en todos los navegadores*/
+}
+
+.busqueda{ /*contenedor del buscador y estado*
+      display grid+ gap para separar los elementos verticalmente*/
+
+    display: grid;
+    gap: 10px;
+}
+
+#buscador{
+    /*estilo del input
+    moderno, grande, redondeado, fondo oscuro y texto claro*/
+
+    width:  100%;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: rgba(0,0,0,0.25);
+    color: var(--text);
+    outline: none;
+    /*quitamos el borde azul por defecto al enfocar*/
+}
+
+#buscador::placeholder{
+    color: rgba(255, 255, 255, 0.55);
+}
+
+#buscador:focus{
+    border-color:  rgba(255, 255, 255, 0.65);
+    box-shadow: 0 0 0 4px rgba(106,228,255,0.18);
+}
+
+.estado{ /*mensaje de estado (sin resultados)*/
+    margin: 12px 0 0;
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px dashed rgba(255, 255, 255, 0.22);
+    color: var(--muted);
+    text-align: center;
+    font-weight: 600;
+}
+
+.controles{
+            /* contenedor de botones
+            flex para ponerlos en fila y que bajen a la siguiente 
+            linea si no caben en pantallas pequeñas */
+    margin-top: 12px;
+    gap: 10px;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+}
+
+.controles button{   /*estilo de los botones*/
+   
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(255, 255, 255, 0.10);
+    color: var(--text);
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+
+    transition: background-color 0.25s ease, 
+                transform 0.15s ease, 
+                box-shadow 0.15s ease, 
+                border-color 0.25s ease;
+                /*transiciones suaves para efectos hover y active*/ 
+}
+
+.controles button:hover{
+    /*hover (cuando pasas el raton por encima)*/
+
+    background: rgba(106, 228, 255, 0.14);
+    border-color: rgba(106, 228, 255, 0.40);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.25);
+    transform: translateY(-2px);
+}
+
+.controles button:active{   /*active (cuando haces click)*/
+    transform: translateY(0);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.22);
+}
+
+.controles button:focus{
+    /*focus (cuando el boton esta enfocado, ej. navegando con teclado)*/
+
+    outline: 2px solid rgba(106,228,255,0.75);
+    outline-offset: 2px; 
+}
+
+#limpiar{
+    /*boton limpiar */
+
+    background: rgba(255,92,122,0.16);
+    border-color: rgba(255,92,122,0.35);
+}
+
+#limpiar:hover{
+    /*hover del boton limpiar*/
+
+    background: rgba(255,92,122,0.22);
+    border-color: rgba(255,92,122,0.55);
+}
+
+.tabla-wrap{
+    /*contenedor de la tabla con scroll horizontal*/
+
+    overflow-x: auto;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+table {
+    width:  100%;
+    border-collapse: collapse;
+    font-size: 0.98rem;
+    min-width: 680px;
+}
+
+thead { /*cabecera de la tabla*/
+
+    background-color: rgb(106, 228, 255, 0.14);
+}
+
+thead th { /*celdas de la cabecera*/
+
+    padding: 12px 14px;
+    text-align: left;
+    font-weight: 800;
+    border: 1px solid rgba(255, 255, 255, 0.18) ;
+    white-space: nowrap;
+
+}
+
+tbody tr { /*filas del cuerpo de la tabla*/
+
+    background-color: rgba(255, 255, 255, 0.02);
+
+}
+
+tbody tr:nth-child(even) { /*filas pares con fondo ligeramente diferente para facilitar la lectura*/
+    background-color: rgba(255, 255, 255, 0.05);
+
+}
+
+tbody tr.seleccionado td {
+    /*fila seleccionada con fondo de acento*/
+
+    background-color: rgba(167, 139, 250, 0.18);
+    font-weight: 800;
+}
+
+tbody td { /*celdas del cuerpo de la tabla*/
+
+    padding: 12px 14px;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+    white-space: nowrap;
+    color: rgba(255, 255, 255, 0.88);
+
+}
+
+.oculto { display: none; }
+/*clase util para ocultar elementos
+ como los botones de limpiar o el mensaje de estado */
+
+
+.sr-only {
+     /* clase util para accesibilidad
+    oculta visualmente el elemento pero lo deja accesible para lectores de pantalla */
+
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+    white-space: nowrap;
+}
+
+.footer{
+    /*pie de pagina centrado con texto secundario*/
+
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.92rem;
+    padding: 6px 4px 0;
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>   <!-- le dice al navegador que este es un documento de html5. Sin esto, el navegador no sabria cómo interpretar el contenido-->
+<html lang="es">  <!-- empieza el documento html "lang = es" indica que el contenido esta en español(ayuda a navegadores y lectores de pantalla)-->
+<head>  <!--<head> contiene informacion del documento, no se ven directamente en la pagina-->
+
+    <meta charset="utf-8"> <!--define la codificacion de caracteres UTF-8 permite representar todos los caracteres posibles-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- hace que la pagina se vea bien en moviles-->
+    <title>Tabla nutricional</title>  <!--titulo de la pagina que aparece en la pestaña del navegador-->
+
+    <link rel="stylesheet" href="css/style.css">  <!--conecta este html con el archivo CSS-->
+    <script src="js/filter.js" defer></script>  <!-- conecta este html con el javascript para interactividad -->
+</head>
+
+
+<body>  <!--el body contiene el contenido visible de la página -->
+
+    <main class="app"> <!-- main contiene el contenido principal de la pagina web
+         y class="app" se usa para aplicar estilos generales en el css-->
+
+        <header class="header">
+            <h1>contacto nutricional por cada 100g de alimentos</h1>  <!--h1 es un titulo principal  -->
+            <p class="subtitulo">Usa el buscador para filtrar alimentos</p> <!-- <p> es un parrafo y class="subtitulo" permite darle estilos en el css-->
+        </header>
+
+    <section class="panel" aria-label="controles de busqueda y ordenacion">
+        <!-- section es un bloque de ocntenido relacionado y class="panel" permite darle estilos en el css
+         aria-label="controles de busqueda y ordenacion" describe q es esta seccion -->
+ 
+        <div class="busqueda"> <!-- contenedor de la zona de busqueda
+              agrupa el label + el input y facilita estilos-->
+
+            <label for="buscador" class="sr-only">Buscar alimentos:</label>
+            <!-- label describe el input. Es muy importante para accesibilidad 
+             for = "buscador" conecta desde este label con el input q tiene id = "buscador"
+             class="sr-only" oculta el texto visualmente pero lo hace accesible para lectores de pantalla -->
+
+            <input type="text" id="buscador" placeholder="Buscar alimentos (ej. fresa, platano, arandano..etc)">
+            <!-- input type="text" es el campo donde el usuario escribe
+             
+            id="buscador" : lo usa el JS para detectar lo que escribes
+            placeholder: texto guia que se ve cuando el campo esta vacio -->
+        </div>
+        
+        <p id="sin-resultados" class="estado oculto" aria-live="polite">0 resultados</p>
+
+        <div class="controles"> <!--contenedor para botones
+            permite alinearlos y darles estilo en el css-->
+            <button id="limpiar" type="button">Limpiar </button>
+            <!-- botón para limpiar el buscador 
+             type="button" evita que el boton envie formularios 
+             id="limpiar" : lo usa el JS para detectar el click -->
+
+            <button id="ordenar-nombre" type="button">Ordenar por nombre</button>
+            <!-- boton para ordenar por nombre 
+             type="button" evita que el boton envie formularios 
+             id="ordenar-nombre" : lo usa el JS para detectar el click -->
+
+            <button id="ordenar-calorias" type="button">Ordenar por calorias</button>
+            <!-- boton para ordenar por calorias 
+             type="button" evita que el boton envie formularios 
+             id="ordenar-calorias" : lo usa el JS para detectar el click -->
+        </div>
+
+    </section>
+
+    <section class="panel" aria-label="Tabla nutricional">   <!-- seccion donde vive la tabla-->
+        <div class="tabla-wrap" role="region" aria-label="Tabla desplazable horizontalmente" tabindex="0">
+            <table id="tabla-nutricional">   <!-- table crea una tabla. Dentro van filas y columnas -->
+                <caption class="sr-only">valores nutricionales por cada 100g de alimentos</caption>
+         
+                <thead>  <!--thead es la cabecera de la tabla -->
+                    <tr>  <!--tr o table row es la fila de la tabla-->
+                        <th scope="col">Alimentos</th>
+                        <th scope="col">Calorias (kCal)</th> <!--scope="col" indica que esta celda es un encabezado de columna-->
+                        <th scope="col">Grasas (g)</th>
+                        <th scope="col">Proteinas (g)</th>
+                        <th scope="col">Carbohidratos (g)</th><!-- th significa table header, es una celda de cabecera con titulo (suele ir en negrita) -->
+                    </tr>
+                </thead>
+                <tbody> <!-- cuerpo de la tabla donde van datos reales -->
+                    <tr>
+                        <td>Arandano</td><td>49</td><td>0.2</td><td>0.4</td><td>12.7</td>
+                        <!--td significa table data, es una celda de datos-->
+                    </tr>
+                    <tr>
+                        <td>Platano</td><td>90</td><td>0.3</td><td>1.0</td><td>23.5</td>
+                    </tr>
+                    <tr>
+                        <td>Cereza</td><td>43</td><td>0.4</td><td>0.9</td><td>10.9</td>
+                    </tr>
+                    <tr>
+                        <td>Fresa</td><td>37</td><td>0.5</td><td>0.8</td><td>8.3</td>
+                    </tr>
+                    <tr>
+                        <td>Arandano</td><td>49</td><td>0.2</td><td>0.4</td><td>12.7</td>
+                    </tr>
+                    <tr>
+                        <td>Platano</td><td>90</td><td>0.3</td><td>1.0</td><td>23.5</td>
+                    </tr>
+                    <tr>
+                        <td>Cereza</td><td>43</td><td>0.4</td><td>0.9</td><td>10.9</td>
+                    </tr>
+                    <tr>
+                        <td>Fresa</td><td>37</td><td>0.5</td><td>0.8</td><td>8.3</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>Tabla nutricional piero</p>
+        <!-- pie de la pagina con informacion adicional-->
+    </footer>
+    </main>
+</body>
+</html>
