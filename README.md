@@ -40,10 +40,14 @@ Fue creado como ejercicio para aprender a conectar **HTML + CSS + JavaScript** d
 Aplicación web para visualizar y filtrar información nutricional.
 
 ## Vista general
+<img width="1919" height="1079" alt="preview" src="https://github.com/user-attachments/assets/d6a58e93-f747-4818-a67b-49956ea519c9" />
 
-![Vista principal](assets/preview.png)
+## Funcionalidades
 
-![Funcionalidad](assets/screenshot.png)
+<img width="1899" height="851" alt="screenshot" src="https://github.com/user-attachments/assets/d749bd5e-deb4-47dc-b5ae-cadb9395cc69" />
+
+
+
 
 
    
