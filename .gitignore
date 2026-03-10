@@ -1,0 +1,51 @@
+# ================================
+# Visual Studio Code
+# ================================
+.vscode/
+
+# ================================
+# Sistema operativo
+# ================================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ================================
+# Logs
+# ================================
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ================================
+# Dependencias (si usas npm más adelante)
+# ================================
+node_modules/
+
+# ================================
+# Archivos temporales / caché
+# ================================
+.cache/
+.temp/
+.tmp/
+
+# ================================
+# Entornos
+# ================================
+.env
+.env.local
+.env.*.local
+
+# ================================
+# Archivos de build (si luego usas bundlers)
+# ================================
+dist/
+build/
+
+# ================================
+# Archivos de sistema innecesarios
+# ================================
+*.swp
+*.swo
+*.bak
